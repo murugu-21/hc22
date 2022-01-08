@@ -3,6 +3,8 @@ import sys
 import solver
 import scorer
 
+old = sys.stdout
+
 for filename in os.listdir("input"):
     fi = open(os.path.join("input", filename))
     sys.stdin = fi
@@ -11,11 +13,9 @@ for filename in os.listdir("input"):
     solver.solve()
     fo.close()
     fi.close()
-    
-maxi = int(open("score").read())
-cur = scorer.score()
 
-if cur > maxi:
-    open("score", "w").write(str(cur))
-    import shutil
-    shutil.copytree("output", "submissions/{}".format(str(cur)))
+sys.stdout = old
+maxi = open("score").readline().split()
+maxi = [int(i) for i in maxi]
+cur = scorer.score(maxi)
+open("score", "w").write(" ".join(cur))

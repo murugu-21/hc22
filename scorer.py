@@ -1,9 +1,11 @@
 import os
 
 
-def score()->int:
-    score = 0
+def score(maxi: list)->list:
+    j = 0
+    scores = []
     for filename in os.listdir("input"):
+        score = 0
         fi = open("input/{}".format(filename))
         fo = open("output/{}".format(filename))
         myPizza = list(fo.readline().split())
@@ -16,4 +18,12 @@ def score()->int:
                 score += 1
         fi.close()
         fo.close()
-    return score
+        if score > maxi[j]:
+            import shutil
+            shutil.copyfile("output/{}".format(filename), "submissions/{}".format(filename[0] + " " + str(score)))
+            print(filename)
+            scores.append(str(score))
+        else:
+            scores.append(str(maxi[j]))
+        j += 1
+    return scores
