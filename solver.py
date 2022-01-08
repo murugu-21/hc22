@@ -8,9 +8,9 @@ def solve():
         likes = input().split()[1::]
         for l in likes:
             if l in score:
-                score[l] += 1
+                score[l] += 2
             else:
-                score[l] = 1
+                score[l] = 2
         dislikes = input().split()[1::]
         for d in dislikes:
             if d in dislikes:
@@ -21,6 +21,6 @@ def solve():
     
     ans = []
     for ing in score:
-        if score[ing] >= 0:
+        if score[ing] > 0:
             ans.append(ing)
     print(str(len(ans)) + " " + " ".join([ing for ing in list(ans)]))
