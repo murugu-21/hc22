@@ -14,8 +14,8 @@ for filename in os.listdir("input"):
     fo.close()
     fi.close()
 
-sys.stdout = old
-maxi = open("score").readline().split()
-maxi = [int(i) for i in maxi]
-cur = scorer.score(maxi)
-open("score", "w").write(" ".join(cur))
+# sys.stdout = old
+# maxi = open("score").readline().split()
+# maxi = [int(i) for i in maxi]
+# cur = scorer.score(maxi)
+# open("score", "w").write(" ".join(cur))
